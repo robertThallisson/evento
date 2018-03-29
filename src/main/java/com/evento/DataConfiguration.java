@@ -12,29 +12,31 @@ import org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter;
 
 @Configuration
 public class DataConfiguration {
-	
-    private String baseDados = "evento";
-    private String usuario = "postgres";
-    private String senha = "robert";
-    private String host = "localhost";
-    private String porta = "5432"; 
-			
-	String url = "jdbc:postgresql://"+host+":"+porta+"/";
-	
-	@Bean
-    public DataSource dataSource(){
-        DriverManagerDataSource dataSource = new DriverManagerDataSource();
-        dataSource.setDriverClassName("org.postgresql.Driver");
-        dataSource.setUrl(url+baseDados);
-        dataSource.setUsername(usuario);
-        dataSource.setPassword(senha);
-        return dataSource;
-    }
-	
 
+	private String baseDados = "evento";
+	private String usuario = "postgres";
+	private String senha = "robert";
+	private String host = "localhost";
+	private String porta = "5432";
+
+	private String url = "jdbc:postgresql://" + host + ":" + porta + "/";
+
+	private String urlH = "URLhpostgres://xiybjazidgkgvl:55b1edcb73c1a735455adcd7c93426b1573ac11ebbac8a38c21b873fdc945dfe@ec2-54-204-44-140.compute-1.amazonaws.com:5432/dbao9o4qkaieoh";
+	private String senhaH = "xiybjazidgkgvl";
+	private String UsuarioH = "55b1edcb73c1a735455adcd7c93426b1573ac11ebbac8a38c21b873fdc945dfe";
 
 	@Bean
-	public JpaVendorAdapter jpaVendorAdapter(){
+	public DataSource dataSource() {
+		DriverManagerDataSource dataSource = new DriverManagerDataSource();
+		dataSource.setDriverClassName("org.postgresql.Driver");
+		dataSource.setUrl(urlH);
+		dataSource.setUsername(UsuarioH);
+		dataSource.setPassword(senhaH);
+		return dataSource;
+	}
+
+	@Bean
+	public JpaVendorAdapter jpaVendorAdapter() {
 		HibernateJpaVendorAdapter adapter = new HibernateJpaVendorAdapter();
 		adapter.setDatabase(Database.MYSQL);
 		adapter.setShowSql(true);
