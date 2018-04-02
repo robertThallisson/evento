@@ -24,7 +24,7 @@ public class DataConfiguration {
 	private String urlH = "postgres://xiybjazidgkgvl:55b1edcb73c1a735455adcd7c93426b1573ac11ebbac8a38c21b873fdc945dfe@ec2-54-204-44-140.compute-1.amazonaws.com:5432/dbao9o4qkaieoh";
 	private String  UsuarioH = "xiybjazidgkgvl";
 	private String senhaH = "55b1edcb73c1a735455adcd7c93426b1573ac11ebbac8a38c21b873fdc945dfe";
-
+	
 	@Bean
 	public DataSource dataSource() {
 		DriverManagerDataSource dataSource = new DriverManagerDataSource();
@@ -38,7 +38,7 @@ public class DataConfiguration {
 	@Bean
 	public JpaVendorAdapter jpaVendorAdapter() {
 		HibernateJpaVendorAdapter adapter = new HibernateJpaVendorAdapter();
-		adapter.setDatabase(Database.MYSQL);
+		adapter.setDatabase(Database.POSTGRESQL);
 		adapter.setShowSql(true);
 		adapter.setGenerateDdl(true);
 		adapter.setDatabasePlatform("org.hibernate.dialect.PostgreSQLDialect");
